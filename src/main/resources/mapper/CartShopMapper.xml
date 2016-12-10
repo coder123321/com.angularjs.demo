@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.angular.demo.dao.CartShopMapper" >
+  <resultMap id="BaseResultMap" type="com.angular.demo.entity.CartShop" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="user_id" jdbcType="INTEGER" />
+    <result column="shop_id" property="shop_id" jdbcType="INTEGER" />
+    <result column="cart_name" property="cart_name" jdbcType="VARCHAR" />
+    <result column="cart_price" property="cart_price" jdbcType="REAL" />
+    <result column="cart_count" property="cart_count" jdbcType="INTEGER" />
+    <result column="creat_time" property="creat_time" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, shop_id, cart_name, cart_price, cart_count, creat_time
+  </sql>
+  <!-- sh   -->
+  
+  
+  <select id="loadcartshop" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cart_shop
+    where user_id = #{userId,jdbcType=INTEGER} 
+  </select>
+  
+  
+  
+   <select id="findByShopId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cart_shop
+    where user_id = #{userId,jdbcType=INTEGER} and shop_id = #{shopId,jdbcType=INTEGER}
+  </select>
+  
+   <insert id="addShopCart" parameterType="com.angular.demo.entity.CartShop" >
+    insert into cart_shop ( user_id,shop_id, cart_name, 
+      cart_price, cart_count, creat_time
+      )
+    values (#{user_id,jdbcType=INTEGER},#{shop_id,jdbcType=INTEGER}, #{cart_name,jdbcType=VARCHAR}, 
+      #{cart_price,jdbcType=REAL}, #{cart_count,jdbcType=INTEGER}, #{creat_time,jdbcType=DATE}
+      )
+  </insert>
+  <update id="updateShopCart" parameterType="java.lang.Integer" >
+    update cart_shop
+    set 
+        cart_count = #{count,jdbcType=INTEGER}
+        where shop_id = #{shopId,jdbcType=INTEGER} and
+              user_id = #{userId,jdbcType=INTEGER}  
+  </update>
+  <delete id="deleteShopCart" parameterType="java.lang.Integer" >
+    delete from cart_shop
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <delete id="cleanShopCart" parameterType="java.lang.Integer" >
+    delete from cart_shop
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+</mapper>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>首页</title>
+<link rel="stylesheet" href="js/bootstrap/bootstrap.min.css" />
+<link rel="stylesheet" href="component/css/tm.pagination.css">
+<script type="text/javascript" src="js/angular/angular.js"></script>
+<script type="text/javascript" src="js/angular/angular-route.js"></script>
+<script type="text/javascript" src="js/angular/angular-cookies.js"></script>
+<script type="text/javascript" src="component/tm.pagination.js"></script>
+</head>
+<body ng-app="indexapp">
+	<div class="tabbable">
+		<!-- Only required for left/right tabs -->
+		<ul class="nav nav-tabs">
+			<li><a href="#/" data-toggle="tab">电器商品</a></li>
+			<li><a href="#/men" data-toggle="tab">男装</a></li>
+			<li><a href="#/women" data-toggle="tab">女装</a></li>
+			<li><a href="#/shopCart" data-toggle="tab">我的购物车</a></li>
+			<li><a href="#/midify-user" data-toggle="tab">修改用户信息</a></li>
+		</ul>
+	</div>
+	<div ng-view></div>
+	
+</body>
+<script type="text/javascript" src="scripts/base.js"></script>
+<script type="text/javascript" src="scripts/app.js"></script>
+<script type="text/javascript" src="scripts/controllers/aController.js"></script>
+<script type="text/javascript" src="scripts/controllers/bController.js"></script>
+<script type="text/javascript" src="scripts/controllers/cController.js"></script>
+<script type="text/javascript" src="scripts/controllers/dController.js"></script>
+<script type="text/javascript" src="scripts/controllers/eController.js"></script>
+
+
+<script type="text/javascript" src="scripts/services/goodsService.js"></script>
+</html>
